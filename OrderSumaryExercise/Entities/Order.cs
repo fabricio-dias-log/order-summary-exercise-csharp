@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using OrderSumaryExercise.Entities.Enums;
 
 namespace OrderSumaryExercise.Entities;
@@ -56,10 +57,10 @@ public class Order
         foreach (OrderItem item in Items)
         {
             sb.AppendLine(
-                $"{item.Product.Name}, {item.Product.Price}, Quantity: {item.Quantity}, SubTotal: {item.SubTotal()}");
+                $"{item.Product.Name}, ${item.Product.Price.ToString("F2", CultureInfo.InvariantCulture)}, Quantity: {item.Quantity}, SubTotal: ${item.SubTotal().ToString("F2", CultureInfo.InvariantCulture)}");
         }
         
-        sb.AppendLine($"Total subtotal: {Total()}");
+        sb.AppendLine($"Total price: ${Total().ToString("F2", CultureInfo.InvariantCulture)}");
         
         return sb.ToString();
     }
