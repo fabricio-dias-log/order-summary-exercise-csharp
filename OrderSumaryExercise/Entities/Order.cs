@@ -16,10 +16,11 @@ public class Order
         
     }
 
-    public Order(DateTime moment, OrderStatus status)
+    public Order(DateTime moment, OrderStatus status, Client client)
     {
         Moment = moment;
         Status = status;
+        Client = client;
     }
 
     public void AddItem(OrderItem item)
